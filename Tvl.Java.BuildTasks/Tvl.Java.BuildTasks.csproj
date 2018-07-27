@@ -14,6 +14,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,11 +120,11 @@
     <None Include="..\Build\Keys\JavaSupport.snk">
       <Link>Key.snk</Link>
     </None>
-    <None Include="packages.config" />
     <NuGetManifest Include="Tvl.Java.nuspec">
       <PackageAnalysis>false</PackageAnalysis>
       <DefaultExcludes>false</DefaultExcludes>
     </NuGetManifest>
+    <None Include="packages.config" />
     <None Include="Tvl.Java.props">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -136,7 +138,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Tvl.NuGet.BuildTasks.1.0.0-alpha002\build\Tvl.NuGet.BuildTasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tvl.NuGet.BuildTasks.1.0.0-alpha002\build\Tvl.NuGet.BuildTasks.props'))" />
     <Error Condition="!Exists('..\packages\Tvl.NuGet.BuildTasks.1.0.0-alpha002\build\Tvl.NuGet.BuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tvl.NuGet.BuildTasks.1.0.0-alpha002\build\Tvl.NuGet.BuildTasks.targets'))" />

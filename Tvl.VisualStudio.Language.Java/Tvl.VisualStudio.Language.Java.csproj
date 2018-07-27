@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.props" Condition="Exists('..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.props')" />
   <Import Project="..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.props" Condition="Exists('..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.props')" />
-  <Import Project="..\packages\Antlr4.4.3.0\build\Antlr4.props" Condition="Exists('..\packages\Antlr4.4.3.0\build\Antlr4.props')" />
-  <Import Project="..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.props" Condition="Exists('..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.props')" />
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.props" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.props')" />
+  <Import Project="..\packages\Antlr3.3.5.1\build\Antlr3.props" Condition="Exists('..\packages\Antlr3.3.5.1\build\Antlr3.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,8 @@
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
     <!-- Common debugging support -->
@@ -113,120 +116,126 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Antlr3.Runtime.3.5.0.3-alpha002\lib\net20\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Antlr4.Runtime.net40">
-      <HintPath>..\packages\Antlr4.Runtime.4.3.0\lib\net40-client\Antlr4.Runtime.net40.dll</HintPath>
+    <Reference Include="Antlr3.Runtime.Debug, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.Debug.3.5.1\lib\net20\Antlr3.Runtime.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.StringTemplate, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\StringTemplate3.3.5.1\lib\net35-client\Antlr3.StringTemplate.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.Runtime, Version=4.6.0.0, Culture=neutral, PublicKeyToken=09abb75b9ed49849, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.4.6.4\lib\net40-client\Antlr4.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\envdte.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\envdte.dll</HintPath>
     </Reference>
     <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.8.8.0.4\lib\net20\envdte80.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.DTE.8.8.0.4\lib\net20\envdte80.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.ComponentModelHost.10.0.4\lib\net40\Microsoft.VisualStudio.ComponentModelHost.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.CoreUtility.10.0.4\lib\net40\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Debugger.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Debugger.Interop.10.10.0.4\lib\net40\Microsoft.VisualStudio.Debugger.Interop.10.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Debugger.InteropA, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Debugger.Interop.9.9.0.4\lib\net20\Microsoft.VisualStudio.Debugger.InteropA.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Designer.Interfaces, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.Designer.7.0.4\lib\net20\Microsoft.VisualStudio.Designer.Interfaces.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.Designer.7.0.4\lib\net20\Microsoft.VisualStudio.Designer.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Editor, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Editor.10.0.4\lib\net40\Microsoft.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Language.10.0.4\lib\net40\Microsoft.VisualStudio.Language.Intellisense.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Language.StandardClassification, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Language.10.0.4\lib\net40\Microsoft.VisualStudio.Language.StandardClassification.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.OLE.Interop.7.0.4\lib\net20\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Project.10.0">
+    <Reference Include="Microsoft.VisualStudio.Project.10.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b7ed17bb64a9597f, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.VisualStudio.Project.10.0.1.0.0-alpha005\lib\net40\Microsoft.VisualStudio.Project.10.0.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Shell.10.10.0.4\lib\net40\Microsoft.VisualStudio.Shell.10.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Shell.Immutable.10.10.0.4\lib\net40\Microsoft.VisualStudio.Shell.Immutable.10.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Shell.Interop.7.0.4\lib\net20\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\VSSDK.Shell.Interop.10.10.0.4\lib\net20\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.Shell.Interop.10.10.0.4\lib\net20\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Shell.Interop.8.8.0.4\lib\net20\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Shell.Interop.9.9.0.4\lib\net20\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Text.10.0.4\lib\net40\Microsoft.VisualStudio.Text.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Text.10.0.4\lib\net40\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Text.10.0.4\lib\net40\Microsoft.VisualStudio.Text.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.Text.10.0.4\lib\net40\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.TextManager.Interop.7.0.4\lib\net20\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
       <HintPath>..\packages\VSSDK.TextManager.Interop.8.8.0.4\lib\net20\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\stdole.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\stdole.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -238,24 +247,24 @@
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="Tvl.VisualStudio.OutputWindow.Interfaces">
+    <Reference Include="Tvl.VisualStudio.OutputWindow.Interfaces, Version=2.0.0.0, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Tvl.VisualStudio.OutputWindow.Interfaces.2.0.0\lib\net40\Tvl.VisualStudio.OutputWindow.Interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VSLangProj, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.VSLangProj.7.0.4\lib\net20\VSLangProj.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.VSLangProj.7.0.4\lib\net20\VSLangProj.dll</HintPath>
     </Reference>
     <Reference Include="VSLangProj2, Version=7.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.VSLangProj.7.0.4\lib\net20\VSLangProj2.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.VSLangProj.7.0.4\lib\net20\VSLangProj2.dll</HintPath>
     </Reference>
     <Reference Include="VSLangProj80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.VSLangProj.8.8.0.4\lib\net20\VSLangProj80.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
-      <HintPath>..\packages\VSSDK.VSLangProj.8.8.0.4\lib\net20\VSLangProj80.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -648,12 +657,12 @@
       <Generator>MSBuild:Compile</Generator>
       <CustomToolNamespace>Tvl.VisualStudio.Language.Java</CustomToolNamespace>
     </Antlr4>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Antlr3 Include="JavaColorizerLexer.g3">
       <Generator>MSBuild:Compile</Generator>
     </Antlr3>
+    <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -710,6 +719,10 @@
     <ProjectReference Include="..\Tvl.Core\Tvl.Core.csproj">
       <Project>{ADD60D3C-8EF6-44ED-B7CD-1FD13FBF8036}</Project>
       <Name>Tvl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tvl.Java.BuildTasks\Tvl.Java.BuildTasks.csproj">
+      <Project>{0220020a-e892-40d0-a066-9f20c52aab2f}</Project>
+      <Name>Tvl.Java.BuildTasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tvl.Java.DebugHostWrapper\Tvl.Java.DebugHostWrapper.vcxproj">
       <Project>{538F6A87-53C9-4F02-B154-2A6925715C1C}</Project>
@@ -829,18 +842,21 @@
   <Import Condition="Exists($(VsSdkTargets))" Project="$(VsSdkTargets)" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.props'))" />
-    <Error Condition="!Exists('..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.targets'))" />
-    <Error Condition="!Exists('..\packages\Antlr4.4.3.0\build\Antlr4.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.4.3.0\build\Antlr4.props'))" />
-    <Error Condition="!Exists('..\packages\Antlr4.4.3.0\build\Antlr4.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.4.3.0\build\Antlr4.targets'))" />
+    <Error Condition="!Exists('..\packages\Antlr3.3.5.1\build\Antlr3.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr3.3.5.1\build\Antlr3.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr3.3.5.1\build\Antlr3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr3.3.5.1\build\Antlr3.targets'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.targets'))" />
     <Error Condition="!Exists('..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.props'))" />
     <Error Condition="!Exists('..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.targets'))" />
+    <Error Condition="!Exists('..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.targets'))" />
   </Target>
-  <Import Project="..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.targets" Condition="Exists('..\packages\Antlr3.3.5.0.3-alpha002\build\Antlr3.targets')" />
-  <Import Project="..\packages\Antlr4.4.3.0\build\Antlr4.targets" Condition="Exists('..\packages\Antlr4.4.3.0\build\Antlr4.targets')" />
+  <Import Project="..\packages\Antlr3.3.5.1\build\Antlr3.targets" Condition="Exists('..\packages\Antlr3.3.5.1\build\Antlr3.targets')" />
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.targets" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.4\build\Antlr4.CodeGenerator.targets')" />
   <Import Project="..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.targets" Condition="Exists('..\packages\Tvl.VisualStudio.OutputWindow.2.0.1\build\Tvl.VisualStudio.OutputWindow.targets')" />
+  <Import Project="..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.targets" Condition="Exists('..\packages\CodeContracts.MSBuild.1.12.0\build\CodeContracts.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
