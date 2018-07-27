@@ -81,6 +81,11 @@
   <ItemGroup>
     <None Include="AgentExports.def" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tvl.Java.DebugHost\Tvl.Java.DebugHost.csproj">
+      <Project>{833550b8-b651-4ffb-b3ae-bf572ac4a18c}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

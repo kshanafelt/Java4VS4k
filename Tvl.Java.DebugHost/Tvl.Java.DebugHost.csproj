@@ -192,10 +192,6 @@
       <Project>{ADD60D3C-8EF6-44ED-B7CD-1FD13FBF8036}</Project>
       <Name>Tvl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tvl.Java.DebugHostWrapper\Tvl.Java.DebugHostWrapper.vcxproj">
-      <Project>{538F6A87-53C9-4F02-B154-2A6925715C1C}</Project>
-      <Name>Tvl.Java.DebugHostWrapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tvl.Java.DebugInterface.Types\Tvl.Java.DebugInterface.Types.csproj">
       <Project>{889EF7CB-9682-4D01-8757-D6FE5B460E9A}</Project>
       <Name>Tvl.Java.DebugInterface.Types</Name>
